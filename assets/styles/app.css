@@ -1,3 +1,36 @@
 body {
-    background-color: lightgray;
+    background-color: #252525;
+    color: #e0e0e0;
+    font-family: "Arial";
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+a {
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.navbar {
+    background-color: #1d1d1d;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.navbar a {
+    height: 100%;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .active {
+    border-bottom: 5px solid #93c5fd;
+    background-color: rgba(10, 100, 180, 0.1);
 }

@@ -2,20 +2,20 @@
 
 namespace App\Controller\Api;
 
-use App\Repository\CarRepository;
+use App\Repository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class CarsController extends AbstractController
+class StudentController extends AbstractController
 {
-    #[Route('/api/cars', name: 'app_api_cars')]
-    public function index(SerializerInterface $serializer, CarRepository $carRepository): JsonResponse
+    #[Route('/api/student', name: 'app_api_student')]
+    public function index(SerializerInterface $serializer, StudentRepository $studentRepository): JsonResponse
     {
-        $cars = $carRepository->findAll();
+        $s = $studentRepository->findAll();
 
-        $jsonContent = $serializer->serialize($cars, 'json');
+        $jsonContent = $serializer->serialize($s, 'json');
         $response = new JsonResponse(
             $jsonContent,
         );

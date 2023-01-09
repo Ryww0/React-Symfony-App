@@ -1,34 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 
-const API_URL = 'http://localhost:8000/api';
+import {BrowserRouter as Router, Routes, Route, NavLink} from "react-router-dom";
 
-function CarList() {
-    // console.log('je suis dans app.js')
-    const [cars, setCars] = useState([]);
+import CarList from "./component/Cars";
+import StudentList from "./component/Students";
 
-    useEffect(() => {
-        fetch(`${API_URL}/cars`)
-            .then((response) => response.json())
-            .then((data) => {
-                setCars(JSON.parse(data));
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, []);
+function App() {
+
 
     return (
         <>
-            <p>salut mon pote</p>
-            <ul>
-                {
-                    cars.map(car => (
-                        <li key={car.id}>{car.name}</li>
-                    ))
-                }
-            </ul>
+            <Router>
+            <header className="navbar">
+                <NavLink to="/">liste des voitures</NavLink>
+                <NavLink to="/students">Liste des élèves</NavLink>
+            </header>
+                <Routes>
+                    <Route path="/" element={<CarList/>}/>
+                    <Route path="/students" element={<StudentList/>}/>
+                </Routes>
+            </Router>
         </>
     );
 }
 
-export default CarList;
+export default App;
